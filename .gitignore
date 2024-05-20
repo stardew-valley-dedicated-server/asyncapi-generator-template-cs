@@ -1,24 +1,6 @@
-# Build output
-.output
-__transpiled
-bin
-obj
-
-# Node dependencies
-node_modules
-
-# Logs
-logs
-*.log
-
 # Misc
 .DS_Store
 .fleet
-
-# Local env files
-.env
-.env.*
-!.env.example
 
 # VS
 .vs
@@ -28,3 +10,21 @@ logs
 
 # IntelliJ
 .idea
+
+# Logs
+logs
+*.log
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# Node dependencies
+node_modules
+
+# Build output
+.output
+__transpiled
+bin
+obj
