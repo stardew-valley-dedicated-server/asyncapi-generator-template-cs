@@ -1,0 +1,24 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <IsPackable>false</IsPackable>
+    <!-- Disable default build outputs -->
+    <IsPackable>false</IsPackable>
+    <SkipCompilerExecution>true</SkipCompilerExecution> <!-- Skip compilation -->
+    <ProduceReferenceAssembly>false</ProduceReferenceAssembly> <!-- Do not produce reference
+    assemblies -->
+    <CopyBuildOutputToOutputDirectory>false</CopyBuildOutputToOutputDirectory> <!-- Do not copy build
+    output -->
+    <CopyOutputSymbolsToOutputDirectory>false</CopyOutputSymbolsToOutputDirectory> <!-- Do not copy
+    output symbols -->
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <DefaultItemExcludes>$(DefaultItemExcludes);__transpiled\**\*.*;node_modules\**\*.*;test\**\*.*</DefaultItemExcludes>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="Websocket.Client" Version="5.1.1" />
+  </ItemGroup>
+</Project>

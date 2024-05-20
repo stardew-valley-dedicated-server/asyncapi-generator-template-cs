@@ -1,0 +1,96 @@
+asyncapi: '3.0.0'
+
+info:
+  title: Websocket Server
+  version: '1.0.0'
+  description: Lorem Ipsum
+
+channels:
+  root:
+    address: "room"
+    messages:
+      connected:
+        $ref: '#/components/messages/connected'
+      mapdata:
+        $ref: '#/components/messages/mapdata'
+      reaction:
+        $ref: '#/components/messages/reaction'
+
+operations:
+  init:
+    action: receive
+    summary: Triggered when joining the server.
+    channel:
+      $ref: '#/channels/root'
+    messages:
+      - $ref: '#/channels/root/messages/connected'
+  updateMapData:
+    action: receive
+    channel:
+      $ref: '#/channels/root'
+    messages:
+      - $ref: '#/channels/root/messages/mapdata'
+    reply:
+      channel:
+        $ref: '#/channels/root'
+      messages:
+        - $ref: '#/channels/root/messages/reaction'
+
+components:
+  messages:
+    connected:
+      summary: Data to initialize the client after first connection.
+      payload:
+        $ref: '#/components/schemas/connected'
+    mapdata:
+      summary: Map data about one player
+      payload:
+        $ref: '#/components/schemas/mapdata'
+    reaction:
+      summary: Reaaaaction
+      payload:
+        $ref: '#/components/schemas/reaction'
+
+  schemas:
+    debugInfo:
+      type: object
+      properties:
+        host:
+          type: string
+        started:
+          type: string
+        build_number:
+          type: integer
+        approximate_connection_time:
+          type: integer
+    connectionInfo:
+      type: object
+      properties:
+        app_id:
+          type: string
+        num_connections:
+          type: integer
+        debug_info:
+          $ref: '#/components/schemas/debugInfo'
+    connected:
+      type: object
+      properties:
+        msg:
+          type: string
+          description: A hello string confirming WebSocket connection
+        connection_info:
+          $ref: '#/components/schemas/connectionInfo'
+    mapdata:
+      type: object
+      properties:
+        placeholder:
+          type: string
+          description: Just a placeholder
+        connection_info:
+          $ref: '#/components/schemas/connectionInfo'
+    reaction:
+      type: object
+      properties:
+        status:
+          type: integer
+          description: Status code

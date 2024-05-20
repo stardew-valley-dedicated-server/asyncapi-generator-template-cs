@@ -1,0 +1,30 @@
+# Build output
+.output
+__transpiled
+bin
+obj
+
+# Node dependencies
+node_modules
+
+# Logs
+logs
+*.log
+
+# Misc
+.DS_Store
+.fleet
+
+# Local env files
+.env
+.env.*
+!.env.example
+
+# VS
+.vs
+
+# VSC
+.history
+
+# IntelliJ
+.idea
